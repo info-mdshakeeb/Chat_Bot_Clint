@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SkBoT</title>
+  </head>
+  <body>
+    <div id="app">
+      <div class="header_container">
+        <h1 class="">Hello</h1>
+        <p>I'am your Assistent how can i help (:</p>
+      </div>
+      <div id="chat_container"></div>
+    </div>
+    <form action="">
+      <textarea
+        name="promt"
+        id="form_s"
+        cols="1"
+        rows="1"
+        placeholder="Ask me..."
+      ></textarea>
+      <button type="submit">
+        <img src="/assets/send.svg" alt="" />
+      </button>
+
+      <img
+        onclick="record()"
+        src="https://img.lovepik.com/free-png/20220118/lovepik-microphone-icon-png-image_401486858_wh300.png"
+        alt=""
+      />
+    </form>
+
+    <script type="module" src="/main.js"></script>
+    <script>
+      function record() {
+        alert("want to type with voice");
+        var recognition = new webkitSpeechRecognition();
+        recognition.lang = "en-GB";
+
+        recognition.onresult = function (event) {
+          // console.log(event);
+          document.getElementById("form_s").value =
+            event.results[0][0].transcript;
+        };
+        recognition.start();
+      }
+    </script>
+  </body>
+</html>
